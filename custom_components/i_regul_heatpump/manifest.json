@@ -1,0 +1,15 @@
+{
+  "domain": "i_regul_heatpump",
+  "name": "i-regul Heat Pump",
+  "codeowners": [
+      "@RedPaladin"
+  ],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://github.com/RedPaladin/i_regul_heatpump",
+  "integration_type": "device",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/RedPaladin/i_regul_heatpump/issues",
+  "requirements": [],
+  "version": "0.0.1"
+}

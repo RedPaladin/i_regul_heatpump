@@ -1,0 +1,65 @@
+{
+    "entity": {
+        "sensor": {
+            "cooling_energy_consumption": {
+                "name": "Cooling energy consumption"
+            },
+            "defrost_energy_consumption": {
+                "name": "Defrost energy consumption"
+            },
+            "ecs_energy_consumption": {
+                "name": "Hot water energy consumption"
+            },
+            "ecs_temperature": {
+                "name": "Hot water temperature"
+            },
+            "external_temperature": {
+                "name": "External temperature"
+            },
+            "heating_energy_consumption": {
+                "name": "Heating energy consumption"
+            },
+            "others_energy_consumption": {
+                "name": "Others energy consumption"
+            },
+            "total_energy_consumption": {
+                "name": "Total energy consumption"
+            },
+            "counter_energy_consumption": {
+                "name": "Counter energy consumption"
+            },
+            "ecs_recirculation": {
+                "name": "Hot water recirculation"
+            }
+        },
+        "binary_sensor": {
+            "ecs_recirculation": {
+                "name": "Hot water recirculation"
+            },
+            "ecs_producing": {
+                "name": "Hot water production"
+            },
+            "appoint_ecs_producing": {
+                "name": "Appoint hot water production"
+            },
+            "external_function": {
+                "name": "External function"
+            },
+            "compressor": {
+                "name": "Compressor"
+            },
+            "regulator": {
+                "name": "Regulator"
+            },
+            "captor": {
+                "name": "Captor"
+            },
+            "heating_cooling_production": {
+                "name": "Heating/Cooling production"
+            },
+            "heating_cooling_supplying": {
+                "name": "Heating/Cooling supplying"
+            }
+        }
+    }
+}

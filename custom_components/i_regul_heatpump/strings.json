@@ -1,0 +1,62 @@
+{
+  "entity": {
+    "sensor": {
+      "external_temperature": {
+        "name": "External temperature"
+      },
+      "ecs_temperature": {
+        "name": "Hot water temperature"
+      },
+      "others_energy_consumption": {
+        "name": "Others energy consumption"
+      },
+      "heating_energy_consumption": {
+        "name": "Heating energy consumption"
+      },
+      "cooling_energy_consumption": {
+        "name": "Cooling energy consumption"
+      },
+      "ecs_energy_consumption": {
+        "name": "Hot water energy consumption"
+      },
+      "defrost_energy_consumption": {
+        "name": "Defrost energy consumption"
+      },
+      "total_energy_consumption": {
+        "name": "Total energy consumption"
+      },
+      "counter_energy_consumption": {
+        "name": "Counter energy consumption"
+      }
+    },
+    "binary_sensor": {
+      "ecs_recirculation": {
+        "name": "Hot water recirculation"
+      },
+      "ecs_producing": {
+        "name": "Hot water production"
+      },
+      "appoint_ecs_producing": {
+        "name": "Appoint hot water production"
+      },
+      "external_function": {
+        "name": "External function"
+      },
+      "compressor": {
+        "name": "Compressor"
+      },
+      "regulator": {
+        "name": "Regulator"
+      },
+      "captor": {
+        "name": "Captor"
+      },
+      "heating_cooling_production": {
+        "name": "Heating/Cooling production"
+      },
+      "heating_cooling_supplying": {
+        "name": "Heating/Cooling supplying"
+      }
+    }
+  }
+}
