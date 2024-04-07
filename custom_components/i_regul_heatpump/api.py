@@ -10,11 +10,15 @@ from .const import _LOGGER, SERVER_HOST, SERVER_PORT
 class HeatPumpApiSensors(StrEnum):
     """List the different supported sensors."""
 
-    # Temperature sensors
+    # Temperature sensors [T°]
     SENSOR_OUTSIDE_TEMP_IDX = "A@3&valeur"
     SENSOR_ECS_TEMP_IDX = "A@1&valeur"
+    SENSOR_ECS_RECIRCULATION_TEMP_IDX = "A@23&valeur"
 
-    # Energy consumption sensors
+    # Heating flow sensor [l/m]
+    SENSOR_HEATING_FLOW_RATE_IDX = "A@21&valeur"
+
+    # Energy consumption sensors [KWh]
     SENSOR_OTHERS_ENERGY_CONSUMPTION_IDX = "M@20&valeur"
     SENSOR_HEATING_ENERGY_CONSUMPTION_IDX = "M@21&valeur"
     SENSOR_COOLING_ENERGY_CONSUMPTION_IDX = "M@22&valeur"
@@ -29,15 +33,21 @@ class HeatPumpApiBinarySensors(StrEnum):
 
     BINARY_SENSOR_ECS_PRODUCING_IDX = "O@1&valeur"  # Production ECS
     BINARY_SENSOR_APPOINT_ECS_PRODUCING_IDX = "O@7&valeur"  # Appoint ECS
-    BINARY_SENSOR_EXTERNAL_FUNCTION_IDX = "O@25&valeur"  # Chauffage ?
+    # BINARY_SENSOR_EXTERNAL_FUNCTION_IDX = "O@25&valeur"  # Chauffage ? NOT INTERESING
     BINARY_SENSOR_ECS_RECIRCULATION_IDX = "O@5&valeur"  # Circulation ECS
+
+    BINARY_SENSOR_ADDITIONAL_HEATING_IDX = "O@101&valeur"  # Appoint chauffage
 
     BINARY_SENSOR_COMPRESSOR_IDX = "O@3&valeur"  # Compresseur
     BINARY_SENSOR_REGULATOR_IDX = "O@4&valeur"  # Détenteur
     BINARY_SENSOR_CAPTOR_IDX = "O@8&valeur"  # Capteur
 
-    BINARY_SENSOR_HEATING_COOLING_PRODUCTION_IDX = "O@26&valeur"  # Prod chaud/froid
-    BINARY_SENSOR_HEATING_COOLING_SUPPLYING_IDX = "O@6&valeur"  # Distri chaud/froid
+    # BINARY_SENSOR_HEATING_COOLING_PRODUCTION_IDX = "O@26&valeur"  # Prod chaud/froid. NOT INTERESING
+    # BINARY_SENSOR_HEATING_COOLING_SUPPLYING_IDX = "O@6&valeur"  # Distri chaud/froid. NOT INTERESING
+
+    BINARY_TECHNICAL_CIRCULATOR_IDX = "O@100&valeur"  # Circulateur technique
+    BINARY_BUFFER_TANK_CIRCULATOR_IDX = "O@60&valeur"  # Circulateur ballon tampon
+    BINARY_REVERSING_VALVE_IDX = "O@10&valeur"  # Vanne inversion
 
 
 BUFFER_SIZE = 4 * 1024 * 1024
@@ -115,10 +125,14 @@ class HeatPumpApi:
 
     def data_available(self, idx) -> bool:
         """Get whether data from given index is available."""
-        _LOGGER.debug("HeatPumpApi: data_available(%s) called", idx)
-        return self._data_dict is not None and self._data_dict.get(idx) is not None
+        result = self._data_dict is not None and self._data_dict.get(idx) is not None
+        _LOGGER.debug(
+            "HeatPumpApi: data_available(%s) called (result: %s)", idx, result
+        )
+        return result
 
     def get_value(self, idx) -> float:
         """Get the value for the given index."""
-        _LOGGER.debug("HeatPumpApi: get_value(%s) called", idx)
-        return float(self._data_dict.get(idx))
+        value = float(self._data_dict.get(idx))
+        _LOGGER.debug("HeatPumpApi: get_value(%s) called (value: %s)", idx, value)
+        return value

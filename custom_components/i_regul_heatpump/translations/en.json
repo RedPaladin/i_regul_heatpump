@@ -16,6 +16,12 @@
             "external_temperature": {
                 "name": "External temperature"
             },
+            "ecs_recirculation_temperature": {
+                "name": "ECS recirculation temperature"
+            },
+            "heating_flow_rate": {
+                "name": "Heating flow rate"
+            },
             "heating_energy_consumption": {
                 "name": "Heating energy consumption"
             },
@@ -42,8 +48,8 @@
             "appoint_ecs_producing": {
                 "name": "Appoint hot water production"
             },
-            "external_function": {
-                "name": "External function"
+            "additional_heating": {
+                "name": "Additional heating"
             },
             "compressor": {
                 "name": "Compressor"
@@ -54,11 +60,14 @@
             "captor": {
                 "name": "Captor"
             },
-            "heating_cooling_production": {
-                "name": "Heating/Cooling production"
+            "technical_circulator": {
+                "name": "Technical circulator"
             },
-            "heating_cooling_supplying": {
-                "name": "Heating/Cooling supplying"
+            "buffer_tank_circulator": {
+                "name": "Buffer tank circulator"
+            },
+            "reversing_valve": {
+                "name": "Reversing valve"
             }
         }
     }

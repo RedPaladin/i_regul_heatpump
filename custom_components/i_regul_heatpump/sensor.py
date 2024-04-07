@@ -9,7 +9,7 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
     SensorStateClass,
 )
-from homeassistant.const import UnitOfEnergy, UnitOfTemperature
+from homeassistant.const import UnitOfEnergy, UnitOfTemperature, UnitOfVolumeFlowRate
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -42,6 +42,22 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         api_sensor_index=HeatPumpApiSensors.SENSOR_ECS_TEMP_IDX,
+    ),
+    HeatPumpEntityDescription(
+        key="ecs_recirculation_temperature",
+        translation_key="ecs_recirculation_temperature",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        api_sensor_index=HeatPumpApiSensors.SENSOR_ECS_RECIRCULATION_TEMP_IDX,
+    ),
+    HeatPumpEntityDescription(
+        key="heating_flow_rate",
+        translation_key="heating_flow_rate",
+        device_class=SensorDeviceClass.VOLUME_FLOW_RATE,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement=UnitOfVolumeFlowRate.LITERS_PER_MINUTE,
+        api_sensor_index=HeatPumpApiSensors.SENSOR_HEATING_FLOW_RATE_IDX,
     ),
     HeatPumpEntityDescription(
         key="others_energy_consumption",

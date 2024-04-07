@@ -40,9 +40,9 @@ BINARY_SENSOR_TYPES: tuple[HeatPumpBinarySensorEntityDescription, ...] = (
         api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_APPOINT_ECS_PRODUCING_IDX,
     ),
     HeatPumpBinarySensorEntityDescription(
-        key="external_function",
-        translation_key="external_function",
-        api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_EXTERNAL_FUNCTION_IDX,
+        key="additional_heating",
+        translation_key="additional_heating",
+        api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_ADDITIONAL_HEATING_IDX,
     ),
     HeatPumpBinarySensorEntityDescription(
         key="compressor",
@@ -60,14 +60,19 @@ BINARY_SENSOR_TYPES: tuple[HeatPumpBinarySensorEntityDescription, ...] = (
         api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_CAPTOR_IDX,
     ),
     HeatPumpBinarySensorEntityDescription(
-        key="heating_cooling_production",
-        translation_key="heating_cooling_production",
-        api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_HEATING_COOLING_PRODUCTION_IDX,
+        key="technical_circulator",
+        translation_key="technical_circulator",
+        api_sensor_index=HeatPumpApiBinarySensors.BINARY_TECHNICAL_CIRCULATOR_IDX,
     ),
     HeatPumpBinarySensorEntityDescription(
-        key="heating_cooling_supplying",
-        translation_key="heating_cooling_supplying",
-        api_sensor_index=HeatPumpApiBinarySensors.BINARY_SENSOR_HEATING_COOLING_SUPPLYING_IDX,
+        key="buffer_tank_circulator",
+        translation_key="buffer_tank_circulator",
+        api_sensor_index=HeatPumpApiBinarySensors.BINARY_BUFFER_TANK_CIRCULATOR_IDX,
+    ),
+    HeatPumpBinarySensorEntityDescription(
+        key="reversing_valve",
+        translation_key="reversing_valve",
+        api_sensor_index=HeatPumpApiBinarySensors.BINARY_REVERSING_VALVE_IDX,
     ),
 )
 
