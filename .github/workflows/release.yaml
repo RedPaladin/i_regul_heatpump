@@ -27,8 +27,8 @@ jobs:
           version="${{ github.event.release.tag_name }}"
           version="${version,,}"
           version="${version#v}"
-          sed -i '/VERSION.=./c\VERSION = "${version}"' "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/const.py"
-          (jq '.version = "${version}"' "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json") > "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json.tmp"
+          sed -i "/VERSION.=./c\VERSION = \"${version}\"" "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/const.py"
+          (jq ".version = \"${version}\"" "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json") > "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json.tmp"
           mv "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json.tmp" "${{ env.I_REGUL_HEATPUMP_ROOT_DIR }}/manifest.json"
 
       - name: Zip the integration directory
