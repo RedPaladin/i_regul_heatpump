@@ -8,13 +8,13 @@ This project is a custom integration of the heat pumps managed by the cloud base
 
 ## Disclaimer
 
-I have no affiliation at all with `i-regul` nor `SAPAC`. It may stop working at any moment if i-regul decides to changes their communication protocol or SAPAC decides to use an other software or makes an update. This has been tested on my personnal appliance so I suppose that this may work also on other heat pumps working with i-regul but without guarranty.
+I have no affiliation at all with `i-regul` nor `SAPAC`. It may stop working at any moment if i-regul decides to change their communication protocol or SAPAC decides to use an other software or makes an update. This has been tested on my personnal appliance so I suppose that this may work also on other heat pumps working with i-regul but without guarranty.
 
 So, as usual, *use this custom integration at your own risk !*
 
 ## Features
 
-This is not a exhaustive reimplementation of `i-regul connect` into Home Assistant. In the actual version, I have focused on collecting data from the heat pump instead of controlling it but it may involve in the future.
+This is not a exhaustive reimplementation of `i-regul connect` into Home Assistant. In the actual version, I was focusing on collecting data from the heat pump instead of controlling it but it may involve in the future.
 
 ### Entities available
 

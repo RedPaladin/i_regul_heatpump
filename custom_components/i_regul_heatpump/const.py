@@ -10,4 +10,6 @@ SCAN_INTERVAL = timedelta(seconds=30)
 SERVER_HOST = "i-regul.fr"
 SERVER_PORT = 443
 
+VERSION = "0.0.0"
+
 _LOGGER = logging.getLogger(DOMAIN)
