@@ -35,6 +35,8 @@ This is not a exhaustive reimplementation of `i-regul connect` into Home Assista
 
 * I strongly suggest to use [HACS](https://hacs.xyz) to install this custom integrations in a easy way.
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=redpaladin&repository=i_regul_heatpump)
+
 * You can also proceed to the installation manually. Copy the folder ```custom_components``` with its content into the ```config``` subfolder of your Home Assistant directory. By default, this directory is located under ```<HOME_ASSISTANT_FOLDER>/config```. The structure of the ```custom_components``` directory should look like this:
 
 ```
