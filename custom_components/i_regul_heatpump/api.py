@@ -18,7 +18,7 @@ class HeatPumpApiSensors(StrEnum):
     # Heating flow sensor [l/m]
     SENSOR_HEATING_FLOW_RATE_IDX = "A@21&valeur"
 
-    # Energy consumption sensors [KWh]
+    # Energy consumption sensors [kWh]
     SENSOR_OTHERS_ENERGY_CONSUMPTION_IDX = "M@20&valeur"
     SENSOR_HEATING_ENERGY_CONSUMPTION_IDX = "M@21&valeur"
     SENSOR_COOLING_ENERGY_CONSUMPTION_IDX = "M@22&valeur"
@@ -26,6 +26,10 @@ class HeatPumpApiSensors(StrEnum):
     SENSOR_DEFROST_ENERGY_CONSUMPTION_IDX = "M@25&valeur"
     SENSOR_TOTAL_ENERGY_CONSUMPTION_IDX = "M@26&valeur"
     SENSOR_COUNTER_ENERGY_CONSUMPTION_IDX = "M@27&valeur"
+
+    # Power sensors
+    SENSOR_PRODUCED_POWER_IDX = "M@6&valeur"  # in kW
+    SENSOR_ABSORBED_POWER_IDX = "M@7&valeur"  # in W
 
 
 class HeatPumpApiBinarySensors(StrEnum):

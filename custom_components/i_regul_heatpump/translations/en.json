@@ -36,6 +36,12 @@
             },
             "ecs_recirculation": {
                 "name": "Hot water recirculation"
+            },
+            "produced_power": {
+                "name": "Produced power"
+            },
+            "absorbed_power": {
+                "name": "Absorbed power"
             }
         },
         "binary_sensor": {

@@ -33,6 +33,12 @@
       },
       "counter_energy_consumption": {
         "name": "Counter energy consumption"
+      },
+      "produced_power": {
+        "name": "Produced power"
+      },
+      "absorbed_power": {
+        "name": "Absorbed power"
       }
     },
     "binary_sensor": {

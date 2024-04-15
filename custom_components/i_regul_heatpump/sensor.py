@@ -9,7 +9,12 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
     SensorStateClass,
 )
-from homeassistant.const import UnitOfEnergy, UnitOfTemperature, UnitOfVolumeFlowRate
+from homeassistant.const import (
+    UnitOfEnergy,
+    UnitOfPower,
+    UnitOfTemperature,
+    UnitOfVolumeFlowRate,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
@@ -67,6 +72,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_OTHERS_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="heating_energy_consumption",
@@ -76,6 +82,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_HEATING_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="cooling_energy_consumption",
@@ -85,6 +92,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_COOLING_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="ecs_energy_consumption",
@@ -94,6 +102,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_ECS_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="defrost_energy_consumption",
@@ -103,6 +112,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_DEFROST_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="total_energy_consumption",
@@ -112,6 +122,7 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_TOTAL_ENERGY_CONSUMPTION_IDX,
         suggested_display_precision=2,
+        force_update=True,
     ),
     HeatPumpEntityDescription(
         key="counter_energy_consumption",
@@ -120,6 +131,25 @@ SENSOR_TYPES: tuple[HeatPumpEntityDescription, ...] = (
         state_class=SensorStateClass.TOTAL,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         api_sensor_index=HeatPumpApiSensors.SENSOR_COUNTER_ENERGY_CONSUMPTION_IDX,
+        suggested_display_precision=2,
+        force_update=True,
+    ),
+    HeatPumpEntityDescription(
+        key="produced_power",
+        translation_key="produced_power",
+        device_class=SensorDeviceClass.POWER,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement=UnitOfPower.KILO_WATT,
+        api_sensor_index=HeatPumpApiSensors.SENSOR_PRODUCED_POWER_IDX,
+        suggested_display_precision=2,
+    ),
+    HeatPumpEntityDescription(
+        key="absorbed_power",
+        translation_key="absorbed_power",
+        device_class=SensorDeviceClass.POWER,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement=UnitOfPower.WATT,
+        api_sensor_index=HeatPumpApiSensors.SENSOR_ABSORBED_POWER_IDX,
         suggested_display_precision=2,
     ),
 )
