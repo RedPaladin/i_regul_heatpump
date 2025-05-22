@@ -50,7 +50,6 @@ class HeatPumpApiBinarySensors(StrEnum):
     BINARY_REVERSING_VALVE_IDX = "O@10&valeur"  # Vanne inversion
 
 
-BUFFER_SIZE = 4 * 1024 * 1024
 REQUEST_ID = 10
 
 
@@ -71,11 +70,9 @@ class HeatPumpApi:
         self._password = password
 
         self._regex = re.compile(r"#(\w+@\d+&\w+)\[(.*?)\]")
-        self._data_dict = None
+        self._data_dict = {}
 
     def _decode_data(self, data) -> None:
-        data_dict = {}
-
         for match in self._regex.finditer(data):
             if match.lastindex != 2:
                 _LOGGER.warning("Something went wrong parsing data")
@@ -83,9 +80,7 @@ class HeatPumpApi:
 
             identifier, value = match.groups()
 
-            data_dict[identifier] = value
-
-        self._data_dict = data_dict
+            self._data_dict[identifier] = value
 
     async def _fetch_data(self) -> None:
         message = f"cdraminfo{self._id}{self._password}{{{REQUEST_ID}#}}"
@@ -98,11 +93,11 @@ class HeatPumpApi:
             writer.write(message.encode())
             await writer.drain()
 
-            data = await reader.read(BUFFER_SIZE)
+            data = await reader.readuntil(b"\r")
 
             if not data.endswith(b"\r"):
-                raise HeatPumpApiRequestException(
-                    "Data doesn't end with line feed. Discarding it"
+                _LOGGER.debug(
+                    "Data doesn't end with line feed, some data may be missing"
                 )
 
             if data.startswith(b"PWD}"):
@@ -125,7 +120,7 @@ class HeatPumpApi:
 
     def data_available(self, idx) -> bool:
         """Get whether data from given index is available."""
-        result = self._data_dict is not None and self._data_dict.get(idx) is not None
+        result = self._data_dict.get(idx) is not None
         _LOGGER.debug(
             "HeatPumpApi: data_available(%s) called (result: %s)", idx, result
         )
