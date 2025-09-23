@@ -3,6 +3,7 @@
 import asyncio
 from enum import StrEnum
 import re
+from async_timeout import timeout
 
 from .const import _LOGGER, SERVER_HOST, SERVER_PORT
 
@@ -87,25 +88,29 @@ class HeatPumpApi:
 
         writer = None
         try:
-            reader, writer = await asyncio.open_connection(SERVER_HOST, SERVER_PORT)
-
-            _LOGGER.debug("Sending: %s", message)
-            writer.write(message.encode())
-            await writer.drain()
-
-            data = await reader.readuntil(b"\r")
-
-            if not data.endswith(b"\r"):
-                _LOGGER.debug(
-                    "Data doesn't end with line feed, some data may be missing"
-                )
-
-            if data.startswith(b"PWD}"):
-                raise HeatPumpApiAuthException("Invalid credentials")
-
-            _LOGGER.debug("Data received : %s", data.decode())
-
-            self._decode_data(data.decode())
+            async with timeout(30):
+                reader, writer = await asyncio.open_connection(SERVER_HOST, SERVER_PORT)
+    
+                _LOGGER.debug("Sending: %s", message)
+                writer.write(message.encode())
+                await writer.drain()
+    
+                data = await reader.readuntil(b"\r")
+    
+                if not data.endswith(b"\r"):
+                    _LOGGER.debug(
+                        "Data doesn't end with line feed, some data may be missing"
+                    )
+    
+                if data.startswith(b"PWD}"):
+                    raise HeatPumpApiAuthException("Invalid credentials")
+    
+                _LOGGER.debug("Data received : %s", data.decode())
+    
+                self._decode_data(data.decode())
+                
+        except TimeoutError:
+            LOGGER.error("Timeout getting new data")
 
         finally:
             if writer is not None:
