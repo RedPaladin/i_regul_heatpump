@@ -2,10 +2,8 @@
   "domain": "i_regul_heatpump",
   "name": "i-regul SAPAC Mistral Compact 7 heat pump integration",
   "homeassistant": "2025.9.4",
-  "dependencies": [],
   "documentation": "https://github.com/RedPaladin/i_regul_heatpump",
   "issue_tracker": "https://github.com/RedPaladin/i_regul_heatpump/issues",
   "integration_type": "hub",
-  "iot_class": "cloud_polling",
-  "requirements": []
+  "iot_class": "cloud_polling"
 }
