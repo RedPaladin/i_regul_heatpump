@@ -2,7 +2,7 @@
   "domain": "i_regul_heatpump",
   "name": "i-regul SAPAC Mistral Compact 7 heat pump integration",
   "homeassistant": "2025.9.4",
-  "codeowners": [ "RedPaladin" ],
+  "codeowners": [ "@RedPaladin" ],
   "dependencies": [],
   "documentation": "https://github.com/RedPaladin/i_regul_heatpump",
   "issue_tracker": "https://github.com/RedPaladin/i_regul_heatpump/issues",
