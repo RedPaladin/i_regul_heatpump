@@ -110,7 +110,7 @@ class HeatPumpApi:
                 self._decode_data(data.decode())
                 
         except TimeoutError:
-            LOGGER.error("Timeout getting new data")
+            _LOGGER.error("Timeout getting new data")
 
         finally:
             if writer is not None:
